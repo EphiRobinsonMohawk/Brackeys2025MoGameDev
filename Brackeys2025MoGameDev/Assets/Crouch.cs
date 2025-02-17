@@ -38,9 +38,9 @@ public class Crouch : MonoBehaviour
              controller.height = controller.height + crouchSpeed * Time.deltaTime;
              if (controller.height < normalHeight)
              {
-                 player.gameObject.SetActive(false);
+               //  player.gameObject.SetActive(false);
                  player.position = player.position + offset * Time.deltaTime;
-                 player.gameObject.SetActive(true);
+                // player.gameObject.SetActive(true);
              }
              if (controller.height >= normalHeight)
              {

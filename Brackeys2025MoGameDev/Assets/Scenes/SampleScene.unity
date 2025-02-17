@@ -1092,7 +1092,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1617907700}
-  crouchSpeed: 2.5
+  crouchSpeed: 3
   normalHeight: 3.8
   crouchHeight: 1.75
   offset: {x: 0, y: 1, z: 0}

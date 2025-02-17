@@ -77,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
         
         
         //sprinting
-        if (isGrounded && Input.GetKey(sprintKey) && crouching == false)
+        if (isGrounded && Input.GetKey(sprintKey))
         {
             state = MovementState.sprinting;
             moveSpeed = sprintSpeed;
@@ -92,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
 
         else
         {
-            
+            state = MovementState.air;
         }
 
     }
