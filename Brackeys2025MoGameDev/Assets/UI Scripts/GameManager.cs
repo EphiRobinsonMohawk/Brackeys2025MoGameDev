@@ -5,6 +5,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager gameManager;
 
+    public GameObject lossUI;
+    public GameObject winUI;
+
     // Resources
     public float wood = 0;
     public float food = 0;
@@ -41,6 +44,8 @@ public class GameManager : MonoBehaviour
     // Scene managerment
     public void ReturnToMenu()
     {
+        gameManager.lossUI.SetActive(false);
+        gameManager.winUI.SetActive(false);
         SceneManager.LoadScene("Menu");
     }
     public void StartGame()
@@ -55,10 +60,14 @@ public class GameManager : MonoBehaviour
     }
 
     public void LoseGame()
-    { }
+    { 
+        gameManager.lossUI.SetActive(true);
+    }
 
     public void WinGame()
-    { }
+    {
+        gameManager.winUI.SetActive(true);
+    }
 
     // Pass time in the game
     public void PassTime(float time)
@@ -78,10 +87,6 @@ public class GameManager : MonoBehaviour
     public void Read()
     {
         insanity += readingInsanityAmount;
-        if (insanity >= 100)
-        {
-            LoseGame();
-        }
     }
 
     public void Eat()
@@ -96,10 +101,6 @@ public class GameManager : MonoBehaviour
     public void AddToFire()
     {
         darkness -= addingToFireDarknessAmount;
-        if (darkness >= 100)
-        {
-            LoseGame();
-        }
     }
 
     public void CollectWood()
