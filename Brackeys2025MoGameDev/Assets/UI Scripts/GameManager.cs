@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+// made most things static, so I can refrence the gameManager for our interactables. -trav
 public class GameManager : MonoBehaviour
 {
     // All counts are out of 100
-    float insanity = 0;
-    float hunger = 0;
-    float darkness = 0;
+    public static float insanity = 0f;
+    public static float hunger = 50f;
+    public static float darkness = 0f;
+    public static float bookProgress = 0f;
 
     // Rates at which insanity, hunger, and darkness increase
     float insanityTimeRate = 0.1f;
@@ -14,9 +15,15 @@ public class GameManager : MonoBehaviour
     float darknessTimeRate = 0.1f;
 
     // Amounts to increase or decrease counts by
-    float readingInsanityAmount = 10;
-    float eatingHungerAmount = 10;
-    float addingToFireDarknessAmount = 10;
+    public static float readingInsanityAmount = 10;
+    public static float eatingHungerAmount = 10;
+    public static float addingToFireDarknessAmount = 10;
+
+    public static bool reading = false;
+
+    //grabbing interaction input data
+    public  static InteractionInputData interactionInputData;
+
 
     // Scene managerment
     public void ReturnToMenu()
@@ -27,51 +34,59 @@ public class GameManager : MonoBehaviour
     {
         // Reset all counts when starting a new game
         insanity = 0;
-        hunger = 0;
+        hunger = 100;
         darkness = 0;
         SceneManager.LoadScene("Game");
     }
 
-    public void LoseGame()
+    public static void LoseGame()
     { }
 
-    public void WinGame()
+    public static void WinGame()
     { }
 
     // Pass time in the game
     public void PassTime(float time)
     {
         // Increase hunger and insanity
-        hunger += time * hungerTimeRate;
+        hunger -= time * hungerTimeRate;
         insanity += time * insanityTimeRate;
         darkness += time * darknessTimeRate;
 
         // Check if the player has lost
-        if (hunger >= 100 || insanity >= 100 || darkness >= 100)
+        if (hunger <= 0 || insanity >= 100 || darkness >= 100)
         {
             LoseGame();
         }
     }
 
-    public void Read()
+    public static void Read()
     {
+
+        bookProgress += 1;
         insanity += readingInsanityAmount;
+        Debug.Log("progress " + bookProgress + " insanity" + insanity);
+        if (bookProgress >= 10)
+        {
+            GameManager.WinGame();
+        }
         if (insanity >= 100)
         {
-            LoseGame();
+            GameManager.LoseGame();
         }
     }
 
-    public void Eat()
+    public static void Eat()
     {
-        hunger -= eatingHungerAmount;
-        if (hunger < 0)
+        hunger += eatingHungerAmount;
+        Debug.Log("Hunger" + hunger);
+        if (hunger > 100)
         {
-            hunger = 0;
+            hunger = 100;
         }
     }
 
-    public void AddToFire()
+    public static void AddToFire()
     {
         darkness -= addingToFireDarknessAmount;
         if (darkness >= 100)
