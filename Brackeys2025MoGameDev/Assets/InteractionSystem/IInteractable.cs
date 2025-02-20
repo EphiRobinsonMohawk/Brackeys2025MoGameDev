@@ -7,6 +7,8 @@ public interface IIntercatable
     bool MultipleUse { get; }
     bool IsInteractable { get; }
 
+    string TooltipMessage { get; }
+
 
     void OnInteract();
 }

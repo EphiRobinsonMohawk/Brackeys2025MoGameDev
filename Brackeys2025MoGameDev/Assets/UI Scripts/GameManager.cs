@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+// made most things static, so I can refrence the gameManager for our interactables. -trav
 public class GameManager : MonoBehaviour
 {
     public static GameManager gameManager;
@@ -13,9 +13,18 @@ public class GameManager : MonoBehaviour
     public float food = 0;
 
     // All counts are out of 100
+<<<<<<< HEAD
+    public static float insanity = 0f;
+    public static float hunger = 50f;
+    public static float darkness = 0f;
+    public static float bookProgress = 0f;
+    public static float logsHeld = 0f;
+    public static float sticksHeld = 0f;
+=======
     public float insanity = 0;
     public float hunger = 0;
     public float darkness = 0;
+>>>>>>> main
 
     // Rates at which insanity, hunger, and darkness increase
     float insanityTimeRate = 0.1f;
@@ -23,9 +32,18 @@ public class GameManager : MonoBehaviour
     float darknessTimeRate = 0.1f;
 
     // Amounts to increase or decrease counts by
-    float readingInsanityAmount = 10;
-    float eatingHungerAmount = 10;
-    float addingToFireDarknessAmount = 10;
+    public static float readingInsanityAmount = 10;
+    public static float eatingHungerAmount = 10;
+    public static float addingToFireDarknessAmount = 10;
+
+    public static bool reading = false;
+
+    //grabbing interaction input data
+    public  static InteractionInputData interactionInputData;
+
+    //making an animator
+    public Animator animator;
+
 
     void Awake()
     {
@@ -54,11 +72,18 @@ public class GameManager : MonoBehaviour
         wood = 0;
         food = 0;
         insanity = 0;
-        hunger = 0;
+        hunger = 100;
         darkness = 0;
         SceneManager.LoadScene("Game");
     }
 
+<<<<<<< HEAD
+    public static void LoseGame()
+    { }
+
+    public static void WinGame()
+    { }
+=======
     public void LoseGame()
     { 
         gameManager.lossUI.SetActive(true);
@@ -68,39 +93,62 @@ public class GameManager : MonoBehaviour
     {
         gameManager.winUI.SetActive(true);
     }
+>>>>>>> main
 
     // Pass time in the game
     public void PassTime(float time)
     {
         // Increase hunger and insanity
-        hunger += time * hungerTimeRate;
+        hunger -= time * hungerTimeRate;
         insanity += time * insanityTimeRate;
         darkness += time * darknessTimeRate;
 
         // Check if the player has lost
-        if (hunger >= 100 || insanity >= 100 || darkness >= 100)
+        if (hunger <= 0 || insanity >= 100 || darkness >= 100)
         {
             LoseGame();
         }
     }
 
-    public void Read()
+    public static void Read()
     {
+
+        bookProgress += 1;
         insanity += readingInsanityAmount;
+<<<<<<< HEAD
+        Debug.Log("progress " + bookProgress + " insanity" + insanity);
+        if (bookProgress >= 10)
+        {
+            GameManager.WinGame();
+        }
+        if (insanity >= 100)
+        {
+            GameManager.LoseGame();
+        }
+=======
+>>>>>>> main
     }
 
-    public void Eat()
+    public static void Eat()
     {
-        hunger -= eatingHungerAmount;
-        if (hunger < 0)
+        hunger += eatingHungerAmount;
+        Debug.Log("Hunger" + hunger);
+        if (hunger > 100)
         {
-            hunger = 0;
+            hunger = 100;
         }
     }
 
-    public void AddToFire()
+    public static void AddToFire()
     {
         darkness -= addingToFireDarknessAmount;
+<<<<<<< HEAD
+        sticksHeld -= 1;
+        if (darkness >= 100)
+        {
+            LoseGame();
+        }
+=======
     }
 
     public void CollectWood()
@@ -111,5 +159,30 @@ public class GameManager : MonoBehaviour
     public void CollectFood()
     {
         food++;
+>>>>>>> main
     }
+
+   public static void Chop()
+    {
+        hunger -= 15;
+        logsHeld--;
+        sticksHeld += 2;
+
+    }
+
+    public static void PickupLog()
+    {
+        if (logsHeld >= 1)
+        {
+            // say I cannot carry more logs
+            Debug.Log("I have " + GameManager.logsHeld + " logs!");
+            Debug.Log("I cannot carry more logs!");
+        }
+        else
+        {
+            logsHeld++;
+            Debug.Log("I have " + GameManager.logsHeld + " logs!");
+        }
+    }
+
 }

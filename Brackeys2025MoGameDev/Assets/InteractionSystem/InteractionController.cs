@@ -1,3 +1,4 @@
+
 using UnityEngine;
 
 public class InteractionController : MonoBehaviour
@@ -5,6 +6,9 @@ public class InteractionController : MonoBehaviour
     [Header("Data")]
     public InteractionInputData interactionInputData;
     public InteractionData interactionData;
+
+    [Space, Header("UI")]
+    [SerializeField] private InteractionUIPanel uiPanel;
 
     [Space]
     [Header("Ray Settings"),]
@@ -15,7 +19,8 @@ public class InteractionController : MonoBehaviour
     private Camera cam;
 
     private bool interacting;
-    private float holdTimer = 0f;
+    public  float holdTimer = 0f;
+    float holdPercent;
 
     private void Awake()
     {
@@ -44,12 +49,14 @@ public class InteractionController : MonoBehaviour
                 if(interactionData.IsEmpty())
                 {
                     interactionData.Interactable = interactable;
+                    uiPanel.SetTooltip(interactable.TooltipMessage);
                 }
                 else
                 {
                     if (!interactionData.IsSameInteractable(interactable))
                     {
                         interactionData.Interactable = interactable;
+                        uiPanel.SetTooltip(interactable.TooltipMessage);
                     }
                        
                         
@@ -58,6 +65,7 @@ public class InteractionController : MonoBehaviour
         }
         else
         {
+            uiPanel.ResetUI();
             interactionData.ResetData();
         }
 
@@ -79,6 +87,7 @@ public class InteractionController : MonoBehaviour
         {
             interacting = false;
             holdTimer = 0f;
+            uiPanel.UpdateProgressBar(0f);
         }
         if(interacting)
         {
@@ -89,6 +98,9 @@ public class InteractionController : MonoBehaviour
             if(interactionData.Interactable.HoldInteract)
             {
                 holdTimer += Time.deltaTime;
+                holdPercent = holdTimer / interactionData.Interactable.HoldDuration;
+                            
+                uiPanel.UpdateProgressBar(holdPercent);
                 if(holdTimer >= interactionData.Interactable.HoldDuration)
                 {
                     interactionData.Interact();
