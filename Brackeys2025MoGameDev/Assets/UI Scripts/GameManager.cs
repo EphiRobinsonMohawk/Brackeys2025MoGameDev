@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     public static float hunger = 50f;
     public static float darkness = 0f;
     public static float bookProgress = 0f;
+    public static float logsHeld = 0f;
+    public static float sticksHeld = 0f;
 
     // Rates at which insanity, hunger, and darkness increase
     float insanityTimeRate = 0.1f;
@@ -23,6 +25,9 @@ public class GameManager : MonoBehaviour
 
     //grabbing interaction input data
     public  static InteractionInputData interactionInputData;
+
+    //making an animator
+    public Animator animator;
 
 
     // Scene managerment
@@ -89,9 +94,34 @@ public class GameManager : MonoBehaviour
     public static void AddToFire()
     {
         darkness -= addingToFireDarknessAmount;
+        sticksHeld -= 1;
         if (darkness >= 100)
         {
             LoseGame();
         }
     }
+
+   public static void Chop()
+    {
+        hunger -= 15;
+        logsHeld--;
+        sticksHeld += 2;
+
+    }
+
+    public static void PickupLog()
+    {
+        if (logsHeld >= 1)
+        {
+            // say I cannot carry more logs
+            Debug.Log("I have " + GameManager.logsHeld + " logs!");
+            Debug.Log("I cannot carry more logs!");
+        }
+        else
+        {
+            logsHeld++;
+            Debug.Log("I have " + GameManager.logsHeld + " logs!");
+        }
+    }
+
 }
