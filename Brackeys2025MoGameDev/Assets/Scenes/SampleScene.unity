@@ -2726,7 +2726,7 @@ GameObject:
   - component: {fileID: 1673521591}
   - component: {fileID: 1673521590}
   - component: {fileID: 1673521589}
-  - component: {fileID: 1673521588}
+  - component: {fileID: 1673521593}
   m_Layer: 7
   m_Name: Interact Test Cube
   m_TagString: Untagged
@@ -2734,6 +2734,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 --- !u!114 &1673521588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2751,6 +2752,8 @@ MonoBehaviour:
   multipleUse: 0
   isInteractable: 1
   tooltipMessage: Interact
+=======
+>>>>>>> main
 --- !u!65 &1673521589
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2840,6 +2843,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1987057323}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1673521593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673521587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04fe872797e5b1944951a108d5f256eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  holdDuration: 0
+  holdInteract: 0
+  multipleUse: 0
+  isInteractable: 1
 --- !u!1 &1819491938
 GameObject:
   m_ObjectHideFlags: 0
