@@ -13,18 +13,12 @@ public class GameManager : MonoBehaviour
     public float food = 0;
 
     // All counts are out of 100
-<<<<<<< HEAD
     public static float insanity = 0f;
     public static float hunger = 50f;
     public static float darkness = 0f;
     public static float bookProgress = 0f;
     public static float logsHeld = 0f;
     public static float sticksHeld = 0f;
-=======
-    public float insanity = 0;
-    public float hunger = 0;
-    public float darkness = 0;
->>>>>>> main
 
     // Rates at which insanity, hunger, and darkness increase
     float insanityTimeRate = 0.1f;
@@ -76,14 +70,6 @@ public class GameManager : MonoBehaviour
         darkness = 0;
         SceneManager.LoadScene("Game");
     }
-
-<<<<<<< HEAD
-    public static void LoseGame()
-    { }
-
-    public static void WinGame()
-    { }
-=======
     public void LoseGame()
     { 
         gameManager.lossUI.SetActive(true);
@@ -93,7 +79,6 @@ public class GameManager : MonoBehaviour
     {
         gameManager.winUI.SetActive(true);
     }
->>>>>>> main
 
     // Pass time in the game
     public void PassTime(float time)
@@ -115,18 +100,15 @@ public class GameManager : MonoBehaviour
 
         bookProgress += 1;
         insanity += readingInsanityAmount;
-<<<<<<< HEAD
         Debug.Log("progress " + bookProgress + " insanity" + insanity);
         if (bookProgress >= 10)
         {
-            GameManager.WinGame();
+            gameManager.WinGame();
         }
         if (insanity >= 100)
         {
-            GameManager.LoseGame();
+            gameManager.LoseGame();
         }
-=======
->>>>>>> main
     }
 
     public static void Eat()
@@ -142,13 +124,7 @@ public class GameManager : MonoBehaviour
     public static void AddToFire()
     {
         darkness -= addingToFireDarknessAmount;
-<<<<<<< HEAD
         sticksHeld -= 1;
-        if (darkness >= 100)
-        {
-            LoseGame();
-        }
-=======
     }
 
     public void CollectWood()
@@ -159,7 +135,6 @@ public class GameManager : MonoBehaviour
     public void CollectFood()
     {
         food++;
->>>>>>> main
     }
 
    public static void Chop()
