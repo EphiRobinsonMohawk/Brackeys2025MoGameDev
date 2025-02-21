@@ -13,9 +13,9 @@ scopes = {
 	"picker_visibility_flags.075BCD15" = "264"
 	"picker_item_size.075BCD15" = "96"
 	"picker_inspector.075BCD15" = "0"
-	"last_search.66F56946" = "visual tree"
+	"last_search.66F56946" = "package"
 	"OpenInspectorPreview.66F56946" = "0"
-	"currentGroup.66F56946" = null
+	"currentGroup.66F56946" = ""
 }
 providers = {
 	asset = {
@@ -72,6 +72,9 @@ providers = {
 objectSelectors = {
 }
 recentSearches = [
+	"packag"
+	"sprite texture"
+	"sprite"
 	"visual tree"
 	"uxml"
 ]
