@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public static float sticksHeld = 0f;
 
     // All counts are out of 100
-    public static float insanity = 0f;
+    public static float insanity = 99f;
     public static float hunger = 50f;
     public static float darkness = 0f;
     public static float bookProgress = 0f;
@@ -69,27 +69,27 @@ public class GameManager : MonoBehaviour
     // Scene managerment
     public void ReturnToMenu()
     {
-        gameManager.lossUI.SetActive(false);
-        gameManager.winUI.SetActive(false);
-        SceneManager.LoadScene("Menu");
+        lossUI.SetActive(false);
+        winUI.SetActive(false);
+        SceneManager.LoadScene(1);
     }
-    public void StartGame()
+    public static void StartGame()
     {
         // Reset all counts when starting a new game
         logsHeld = 0;
-        insanity = 0;
-        hunger = 100;
+        insanity = 99;
+        hunger = 50;
         darkness = 0;
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene(0);
     }
     public void LoseGame()
     {
-        gameManager.lossUI.SetActive(true);
+        lossUI.SetActive(true);
     }
 
     public void WinGame()
     {
-        gameManager.winUI.SetActive(true);
+        winUI.SetActive(true);
     }
 
     // Pass time in the game
@@ -155,13 +155,13 @@ public class GameManager : MonoBehaviour
         if (logsHeld >= 1)
         {
             // say I cannot carry more logs
-            Debug.Log("I have " + GameManager.logsHeld + " logs!");
+            Debug.Log("I have " + logsHeld + " logs!");
             Debug.Log("I cannot carry more logs!");
         }
         else
         {
             logsHeld++;
-            Debug.Log("I have " + GameManager.logsHeld + " logs!");
+            Debug.Log("I have " + logsHeld + " logs!");
         }
     }
 
