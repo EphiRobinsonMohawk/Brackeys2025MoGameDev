@@ -3,6 +3,9 @@ using UnityEngine;
 public class ChopInteractable : InteractableBase
 {
     public Animator animator;
+    
+    
+
     public override void OnInteract()
     {
         base.OnInteract();

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 // made most things static, so I can refrence the gameManager for our interactables. -trav
@@ -8,22 +9,24 @@ public class GameManager : MonoBehaviour
     public GameObject lossUI;
     public GameObject winUI;
 
+    public static AudioManager audioManager;
+
+
     // Resources
-    public float wood = 0;
-    public float food = 0;
+    public static float logsHeld = 0f;
+    public static float sticksHeld = 0f;
 
     // All counts are out of 100
     public static float insanity = 0f;
     public static float hunger = 50f;
     public static float darkness = 0f;
     public static float bookProgress = 0f;
-    public static float logsHeld = 0f;
-    public static float sticksHeld = 0f;
+
 
     // Rates at which insanity, hunger, and darkness increase
-    float insanityTimeRate = 0.1f;
-    float hungerTimeRate = 0.1f;
-    float darknessTimeRate = 0.1f;
+    float insanityTimeRate = 0.2f;
+    float hungerTimeRate = 0.5f;
+    float darknessTimeRate = 1f;
 
     // Amounts to increase or decrease counts by
     public static float readingInsanityAmount = 10;
@@ -33,7 +36,7 @@ public class GameManager : MonoBehaviour
     public static bool reading = false;
 
     //grabbing interaction input data
-    public  static InteractionInputData interactionInputData;
+    public static InteractionInputData interactionInputData;
 
     //making an animator
     public Animator animator;
@@ -51,6 +54,16 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        // load audio
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
+    public void Update()
+    {
+        PassTime();
+        Debug.Log(+darkness + " darkness");
+        Debug.Log(+hunger + " hunger");
+        Debug.Log(+insanity + " insanity");
     }
 
     // Scene managerment
@@ -63,15 +76,14 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         // Reset all counts when starting a new game
-        wood = 0;
-        food = 0;
+        logsHeld = 0;
         insanity = 0;
         hunger = 100;
         darkness = 0;
         SceneManager.LoadScene("Game");
     }
     public void LoseGame()
-    { 
+    {
         gameManager.lossUI.SetActive(true);
     }
 
@@ -81,12 +93,12 @@ public class GameManager : MonoBehaviour
     }
 
     // Pass time in the game
-    public void PassTime(float time)
+    public void PassTime()
     {
         // Increase hunger and insanity
-        hunger -= time * hungerTimeRate;
-        insanity += time * insanityTimeRate;
-        darkness += time * darknessTimeRate;
+        hunger -= Time.deltaTime * hungerTimeRate;
+        insanity += Time.deltaTime * insanityTimeRate;
+        darkness += Time.deltaTime * darknessTimeRate;
 
         // Check if the player has lost
         if (hunger <= 0 || insanity >= 100 || darkness >= 100)
@@ -127,21 +139,14 @@ public class GameManager : MonoBehaviour
         sticksHeld -= 1;
     }
 
-    public void CollectWood()
-    {
-        wood++;
-    }
-
-    public void CollectFood()
-    {
-        food++;
-    }
-
-   public static void Chop()
+    public static void Chop()
     {
         hunger -= 15;
         logsHeld--;
         sticksHeld += 2;
+        audioManager.PlaySFX(audioManager.chop);
+
+
 
     }
 
@@ -160,4 +165,5 @@ public class GameManager : MonoBehaviour
         }
     }
 
+   
 }
