@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public static float sticksHeld = 0f;
 
     // All counts are out of 100
-    public static float insanity = 90f;
+    public static float insanity = 27f;
     public static float hunger = 50f;
     public static float darkness = 0f;
     public static float bookProgress = 0f;
@@ -61,9 +61,9 @@ public class GameManager : MonoBehaviour
     public void Update()
     {
         PassTime();
-        Debug.Log(+darkness + " darkness");
-        Debug.Log(+hunger + " hunger");
-        Debug.Log(+insanity + " insanity");
+        //Debug.Log(+darkness + " darkness");
+        //Debug.Log(+hunger + " hunger");
+        //Debug.Log(+insanity + " insanity");
     }
 
     // Scene managerment

@@ -11,15 +11,23 @@ public class InsanityVisualizer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        content.SetActive(false);
-        worried.SetActive(false);
-        insane.SetActive(false);
-
         if (GameManager.insanity > 70)
+        {
             insane.SetActive(true);
+            content.SetActive(false);
+            worried.SetActive(false);
+        }
         else if (GameManager.insanity > 30)
+        {
             worried.SetActive(true);
+            content.SetActive(false);
+            insane.SetActive(false);
+        }
         else
+        {
+            worried.SetActive(false);
+            insane.SetActive(false);
             content.SetActive(true);
+        }
     }
 }

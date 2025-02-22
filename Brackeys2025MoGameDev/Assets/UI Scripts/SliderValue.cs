@@ -11,6 +11,7 @@ public class SliderValue : MonoBehaviour
         if (Insanity)
         {
             GetComponent<UnityEngine.UI.Slider>().value = GameManager.insanity;
+            Debug.Log("Slider Value: " + GetComponent<UnityEngine.UI.Slider>().value);
         }
         else if (Hunger)
         {

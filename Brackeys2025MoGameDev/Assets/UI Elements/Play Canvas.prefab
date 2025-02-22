@@ -1641,8 +1641,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Insanity: 0
-  Hunger: 1
-  Progress: 0
+  Hunger: 0
+  Progress: 1
 --- !u!1 &4313526958326439289
 GameObject:
   m_ObjectHideFlags: 0
@@ -1818,7 +1818,7 @@ RectTransform:
   m_Father: {fileID: 3945464071032259871}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: -0.92552185}
   m_SizeDelta: {x: 8.5118, y: 29.82}
   m_Pivot: {x: 0.5, y: 0.5}
