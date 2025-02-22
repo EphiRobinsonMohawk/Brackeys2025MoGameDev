@@ -9,11 +9,11 @@ public class SliderValue : MonoBehaviour
     {
         if (Insanity)
         {
-            GetComponent<UnityEngine.UI.Slider>().value = GameManager.gameManager.insanity;
+            GetComponent<UnityEngine.UI.Slider>().value = GameManager.insanity;
         }
         else if (Hunger)
         {
-            GetComponent<UnityEngine.UI.Slider>().value = GameManager.gameManager.hunger;
+            GetComponent<UnityEngine.UI.Slider>().value = GameManager.hunger;
         }
     }
 }
