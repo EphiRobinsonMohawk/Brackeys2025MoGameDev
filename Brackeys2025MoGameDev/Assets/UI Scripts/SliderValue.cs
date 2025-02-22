@@ -4,6 +4,7 @@ public class SliderValue : MonoBehaviour
 {
     public bool Insanity;
     public bool Hunger;
+    public bool Progress;
 
     void Update()
     {
@@ -14,6 +15,10 @@ public class SliderValue : MonoBehaviour
         else if (Hunger)
         {
             GetComponent<UnityEngine.UI.Slider>().value = GameManager.hunger;
+        }
+        else if (Progress)
+        {
+            GetComponent<UnityEngine.UI.Slider>().value = GameManager.bookProgress;
         }
     }
 }
