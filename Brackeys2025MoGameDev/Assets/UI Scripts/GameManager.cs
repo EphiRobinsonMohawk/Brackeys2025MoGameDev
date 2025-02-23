@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public static float sticksHeld = 0f;
 
     // All counts are out of 100
-    public static float insanity = 99f;
+    public static float insanity = 0f;
     public static float hunger = 50f;
     public static float darkness = 0f;
     public static float bookProgress = 0f;
@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
     {
         // Reset all counts when starting a new game
         logsHeld = 0;
-        insanity = 99;
+        insanity = 0;
         hunger = 50;
         darkness = 0;
         SceneManager.LoadScene(1);

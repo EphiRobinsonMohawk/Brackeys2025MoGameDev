@@ -503,7 +503,7 @@ GameObject:
   - component: {fileID: 4779854333333367386}
   - component: {fileID: 5696002280827465240}
   m_Layer: 5
-  m_Name: BerriesCount
+  m_Name: StickCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3408,6 +3408,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4532047557733730036}
+  - component: {fileID: 8485240386508510059}
   m_Layer: 0
   m_Name: Inventory
   m_TagString: Untagged
@@ -3434,3 +3435,17 @@ Transform:
   - {fileID: 5963409696095270723}
   m_Father: {fileID: 5297818589983436400}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8485240386508510059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9132807096837222909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5476849de7c2d3542a1e3f276227d979, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stickText: {fileID: 5696002280827465240}
+  logText: {fileID: 6486669296165483645}
