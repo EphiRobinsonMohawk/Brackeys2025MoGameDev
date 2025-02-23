@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
     {
         lossUI.SetActive(false);
         winUI.SetActive(false);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
     public static void StartGame()
     {
@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
         insanity = 99;
         hunger = 50;
         darkness = 0;
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
     public void LoseGame()
     {
